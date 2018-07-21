@@ -1,0 +1,91 @@
+/*	-WHAT IS THIS?-
+	This file adds optional material to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+
+/*	-INFORMATION-
+	Subject:	Subclass
+	Effect:		This script adds a subclass for the Cleric, called "Fate Domain"
+				This is taken from the DMs Guild website (https://www.dmsguild.com/product/194789/)
+				This subclass is made by Cody Faulk
+	Code by:	MorePurpleMoreBetter
+	Date:		2017-11-29 (sheet v12.999)
+	
+	Please support the creator of this content (Cody Faulk) and download his material from the DMs Guild website: https://www.dmsguild.com/browse.php?author=Cody%20Faulk
+*/
+
+var iFileName = "Cleric - Sword Dancer Domain [Toby Miller's work, transcribed by MPMB].js";
+RequiredSheetVersion(12.999);
+
+SourceList["CF:FD"] = {
+	name : "Tobias Miller: Sword Dancer Domain",
+	abbreviation : "TWM:SDD",
+	group : "Dungeon Masters Guild",
+	url : "http://www.dmsguild.com/product/176361",
+	date : "2018/20/07"
+};
+
+AddSubClass("cleric", "sword dancer domain", {
+	regExpSearch : /^(?=.*(cleric|priest|clergy|acolyte))(?=.*fate).*$/i,
+	subname : "Sword Dancer Domain",
+	source : ["CF:FD", 1],
+	spellcastingExtra : ["charm person", "magic missile", "moonbeam", "suggestion", "create food and water", "beacon of hope", "freedom of movement", "blade ward", "commune", "moonbeam"],
+	features : {
+		"subclassfeature1" : {
+			name : "Eilistraee Moonfire",
+			source : ["TWM:SDD", 0],
+			minlevel : 1,
+			description : "\n   " + "I learn the Eilistraee's Moonfire cantrip",
+      ]
+			spellcastingBonus : [{
+				name : "Eilistraee Moonfire (Light)",
+				spells : ["light"],
+				selection : ["light"],
+			}
+			}],
+			addMod : { type : "skill", field : "ArmorClass", mod : "Cha", text : "I add my Cha modifier to my armor class." }
+		},
+    "subclassfeature1.1" : {
+			name : "Bonus Proficiency",
+			source : ["UA:OD", 1],
+			minlevel : 1,
+			description : "\n   " + "I gain proficiency with longswords and greatswords",
+			weapons : [false, true],
+		},
+		"subclassfeature2" : {
+			name : "Channel Divinity: Eilistraee Dance",
+			source : ["TWM:SDD", 0],
+			minlevel : 2,
+			description : "\n   " + "As a bonus action, I gain proficiency in acrobatics and advantage on acrobatics checks if already proficient",
+			action : ["bonus action", ""]
+		},
+		"subclassfeature6" : {
+			name : "Smile of The Dark Lady",
+			source : ["TWM:SDD", 0],
+			minlevel : 6,
+			description : "\n   " + "As an action after expending a use of my channel divinity, I can charm any creature within 30ft up to Charisma modifier, the DC is decided as performance check"
+      action : ["bonus action", ""]
+		},
+		name : "Divine Strike",
+			source : ["UA:OD", 2],
+			minlevel : 8,
+			description : "\n   " + "Once per turn, when I hit a creature with a weapon attack, I can do extra damage",
+			additional : levels.map(function (n) {
+				if (n < 8) return "";
+				return "+" + (n < 14 ? 1 : 2) + "d8 force damage";
+			}),
+			calcChanges : {
+				atkAdd : ["if (classes.known.cleric && classes.known.cleric.level > 7 && !isSpell) {fields.Description += (fields.Description ? '; ' : '') + 'Once per turn +' + (classes.known.cleric.level < 14 ? 1 : 2) + 'd8 force damage'; }; ", "Once per turn, I can have one of my weapon attacks that hit do extra force damage."]
+			}
+		},
+		"subclassfeature17" : {
+			name : "Sword of The Dark Maiden",
+			source : ["TWM:SDD", 0],
+			minlevel : 17,
+			description : "\n   " + "Once per short rest as a bonus action i can give the Dancing property to a sword for 4 rounds"
+      action : ["bonus action", ""]
+		}
+	}
+});
