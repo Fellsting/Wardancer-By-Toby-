@@ -1,0 +1,46 @@
+RaceList["steam genasi"] = {
+	regExpSearch : /^(?=.*(gensi|planetouched))(?=.*\bsteams?\b).*$/i,
+	name : "Steam genasi",
+	sortname : "Genasi, Steam",
+	source : ["E", 9],
+	plural : "Steam genasi",
+	vision : [["Darkvision", 60]],
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 }
+	},
+	languageProfs : ["Common", "Primordial"],
+	dmgres : ["Fire", "Acid"],
+	age : " reach adulthood in their late teens and live up to 120 years",
+	height : " range from barely 5 to well over 6 feet tall (4'8\" + 2d10\")",
+	weight : " weigh around 165 lb (110 + 2d10 \xD7 2d4 lb)",
+	heightMetric : " range from barely 1,5 to well over 1,8 metres tall (145 + 5d10 cm)",
+	weightMetric : " weigh around 75 kg (50 + 5d10 \xD7 4d4 / 10 kg)",
+	improvements : "Steam Genasi: +2 Constitution, +1 Intelligence, +1 Wisdom;",
+	scores : [0, 0, 2, 1, 0, 0],
+	trait : "Steam Genasi (+2 Constitution, +1 Intelligence, +1 Wisdom)\n\Steam Furnace:\n   I know the Boiling Spray cantrip.\n   Once I reach 3rd level, I can cast the Chaos bolt spell once as a 1st-level spell.\n   I regain the ability to cast it this way when I finish a long rest.\n   Constitution is my spellcasting ability for these spells.",
+	abilitySave : 3,
+	spellcastingAbility : 3,
+	spellcastingBonus : {
+		name : "Steam Furnace (level 1)",
+		spells : ["acid spray"],
+		selection : ["acid spray"],
+		atwill : true
+	},
+	features : {
+		"chaos bolt" : {
+			name : "Chaos Bolt",
+			minlevel : 3,
+			usages : 1,
+			recovery : "long rest",
+			tooltip : " (Steam Furnace)",
+			action : ["action", ""],
+			spellcastingBonus : {
+				name : "Steam Furnace (level 3)",
+				spells : ["chaos bolt"],
+				selection : ["chaos bolt"],
+				oncelr : true
+			}
+		}
+	}
+};
