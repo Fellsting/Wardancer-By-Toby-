@@ -1,5 +1,5 @@
 RaceList["steam genasi"] = {
-	regExpSearch : /^(?=.*(gensi|planetouched))(?=.*\bsteams?\b).*$/i,
+	regExpSearch : /^(?=.*(genasi|planetouched))(?=.*\bsteams?\b).*$/i,
 	name : "Steam genasi",
 	sortname : "Genasi, Steam",
 	source : ["E", 9],
@@ -17,8 +17,8 @@ RaceList["steam genasi"] = {
 	heightMetric : " range from barely 1,5 to well over 1,8 metres tall (145 + 5d10 cm)",
 	weightMetric : " weigh around 75 kg (50 + 5d10 \xD7 4d4 / 10 kg)",
 	improvements : "Steam Genasi: +2 Constitution, +1 Intelligence, +1 Wisdom;",
-	scores : [0, 0, 2, 1, 0, 0],
-	trait : "Steam Genasi (+2 Constitution, +1 Intelligence, +1 Wisdom)\n\Steam Furnace:\n   I know the Boiling Spray cantrip.\n   Once I reach 3rd level, I can cast the Chaos bolt spell once as a 1st-level spell.\n   I regain the ability to cast it this way when I finish a long rest.\n   Constitution is my spellcasting ability for these spells.",
+	scores : [0, 0, 2, 1, 1, 0],
+	trait : "Steam Genasi (+2 Constitution, +1 Intelligence, +1 Wisdom)\n\Steam Furnace:\n   I know the Boiling Spray cantrip.\n   Once I reach 3rd level, I can cast the Chaos Bolt spell once as a 1st-level spell.\n   I regain the ability to cast it this way when I finish a long rest.\n   Constitution is my spellcasting ability for these spells.",
 	abilitySave : 3,
 	spellcastingAbility : 3,
 	spellcastingBonus : {
