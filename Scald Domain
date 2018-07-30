@@ -1,0 +1,62 @@
+AddSubClass("cleric", "scald domain", {
+	regExpSearch : /^(?=.*(cleric|priest|clergy|acolyte))(?=.*\b(scald|boil|storm)\b).*$/i,
+	subname : "Scald Domain",
+	source : ["P", 62],
+	spellcastingExtra : ["create or destroy water", "burning hands", "aganazzar's scorcher", "melf's acid arrow", "tidal wave", "fireball", "control water", "fire shield", "flame strike", "maelstrom"],
+	features : {
+		"subclassfeature1" : {
+			name : "Bonus Proficiency",
+			source : ["P", 62],
+			minlevel : 1,
+			description : "\n   " + "I gain proficiency with martial weapons and heavy armor",
+			armor : [false, false, true, false],
+			weapons : [false, true]
+		},
+		"subclassfeature1.1" : {
+			name : "Wrath of the Scalding Tide",
+			source : ["P", 62],
+			minlevel : 1,
+			description : "\n   " + "As a reaction, when a creature I can see within 5 ft hits me, I can rebuke them with acidic rage" + "\n   " + "It takes 2d8 acid or fire damage (my choice) that a Dex save can halve",
+			usages : "Wisdom modifier per ",
+			usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+			recovery : "long rest",
+			action : ["reaction", ""]
+		},
+		"subclassfeature2" : {
+			name : "Channel Divinity: Boiling Wrath",
+			source : ["P", 62],
+			minlevel : 2,
+			description : "\n   " + "Instead of rolling, I can do maximum damage when I do fire or acid damage"
+		},
+		"subclassfeature6" : {
+			name : "Burning Soul",
+			source : ["P", 62],
+			minlevel : 6,
+      action : ["action", ""],
+			description : "\n   " + "As an action i can mark a number of creatures up to my wisdom modifier with a boiling halo"
+		},
+		"subclassfeature8" : {
+			name : "Divine Strike",
+			source : ["P", 62],
+			minlevel : 8,
+			description : "\n   " + "Once per turn, when I hit a creature with a weapon attack, I can do extra damage",
+			additional : levels.map(function (n) {
+				if (n < 8) return "";
+				return "+" + (n < 14 ? 1 : 2) + "d8 acid damage";
+			}),
+			calcChanges : {
+				atkAdd : ["if (classes.known.cleric && classes.known.cleric.level > 7 && !isSpell) {fields.Description += (fields.Description ? '; ' : '') + 'Once per turn +' + (classes.known.cleric.level < 14 ? 1 : 2) + 'd8 thunder damage'; }; ", "Once per turn, I can have one of my weapon attacks that hit do extra thunder damage."]
+			}
+		},
+		"subclassfeature17" : {
+			name : "Scorching Soul",
+			source : ["P", 62],
+			minlevel : 17,
+			description : desc([
+				"I gain immunity to fire and acid damage",
+				"Marked creatures now add 1d6 fire or acid damage to their weapon attacks"
+			]),
+			savetxt : { immune : ["fire", "acid"] },
+		}
+	}
+});
