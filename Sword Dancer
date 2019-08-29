@@ -58,15 +58,15 @@ AddSubClass("cleric", "sword dancer domain", {
 			name : "Channel Divinity: Eilistraee Dance",
 			source : ["TWM:SDD", 0],
 			minlevel : 2,
-			description : "\n   " + "As a bonus action, I gain proficiency in acrobatics and advantage on acrobatics checks if already proficient",
+			description : "\n   " + "As an action, I gain advantage on acrobatics checks, I am also under the effects of Freedom of Movement, the dodge and disengage action and my speed is increased by 10",
 			action : ["bonus action", ""]
 		},
 		"subclassfeature6" : {
 			name : "Smile of The Dark Lady",
 			source : ["TWM:SDD", 0],
 			minlevel : 6,
-			description : "\n   " + "As an action after expending a use of my channel divinity, I can charm any creature within 30ft up to Charisma modifier, the DC is decided as performance check"
-      action : ["bonus action", ""]
+			description : "\n   " + "As an action, I can charm any creature within 30ft up to Charisma modifier, If the target succeeds they still have disadvantage on attacks until the end of my turn. I can use this feature up to my charisma modifier"
+      action : ["action", ""]
 		},
 		name : "Divine Strike",
 			source : ["UA:OD", 2],
@@ -81,10 +81,10 @@ AddSubClass("cleric", "sword dancer domain", {
 			}
 		},
 		"subclassfeature17" : {
-			name : "Sword of The Dark Maiden",
+			name : "Eternal Dance",
 			source : ["TWM:SDD", 0],
 			minlevel : 17,
-			description : "\n   " + "Once per short rest as a bonus action i can give the Dancing property to a sword for 4 rounds"
+			description : "\n   " + "you ignore difficult terrain and have Advantage on Acrobatics checks. Furthemore, when you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and half damage if you fail"
       action : ["bonus action", ""]
 		}
 	}
